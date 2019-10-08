@@ -4,4 +4,4 @@
 
 #### 目录
 
-- [x] 单点登录(SS0)
+- [x] [单点登录(SS0)](https://github.com/yigebanchengxuyuan/work-summary/blob/master/sso.md "单点登录")
