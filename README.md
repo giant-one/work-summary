@@ -4,7 +4,7 @@
 
 #### 目录
 
-- [ x ] [单点登录(SS0)](https://github.com/yigebanchengxuyuan/work-summary/blob/master/sso.md "单点登录")
-- [ x ] [mysql主从配置(master-slave)](https://github.com/yigebanchengxuyuan/work-summary/blob/master/mysql_master_salve.md "mysql主从配置")
-- [  ] [redis主从配置(master-slave)]
-- [  ] [敏感词过滤系统设计]
+- [x] [单点登录(SS0)](https://github.com/yigebanchengxuyuan/work-summary/blob/master/sso.md "单点登录")
+- [x] [mysql主从配置(master-slave)](https://github.com/yigebanchengxuyuan/work-summary/blob/master/mysql_master_salve.md "mysql主从配置")
+- [ ] redis主从配置(master-slave)
+- [ ] 敏感词过滤系统设计
