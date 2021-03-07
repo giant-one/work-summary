@@ -1,5 +1,4 @@
 <?php
-
 /*
  * 练习题
  * 1） 求单链表中有效节点个数
@@ -8,6 +7,24 @@
  * 4） 从头到尾打印单链表【百度，要求方式1: 反转遍历。方式2: Stack栈】
  * 5） 合并两个有序的单链表，合并之后的链表依然有序
  */
+
+/*
+ * 单链表的反转【腾讯面试题】
+ */
+$root_node = new Node(0, '', '');
+$simple_linked_list = new SimpleLinkedList($root_node);
+$node1 = new Node('1', '宋江', '及时雨');
+$node2 = new Node('2', '吴用', '智多星');
+$node3 = new Node('3', '李逵', '小旋风');
+$simple_linked_list->add($node1);
+$simple_linked_list->add($node2);
+$simple_linked_list->add($node3);
+echo "反转前~~\n";
+$simple_linked_list->display();
+$simple_linked_list->reverse($root_node);
+echo "反转后~~\n";
+$simple_linked_list->display();
+
 
 /*
  * 求单链表中有效节点个数
@@ -30,7 +47,7 @@ $simple_linked_list->display();
  * 1、获取链表长度
  * 2、遍历链表找到第(length - k)个即可
  */
-
+/*
 $root_node = new Node(0, '', '');
 $simple_linked_list = new SimpleLinkedList($root_node);
 $node1 = new Node('1', '宋江', '及时雨');
@@ -40,7 +57,7 @@ $simple_linked_list->add($node1);
 $simple_linked_list->add($node2);
 $simple_linked_list->add($node3);
 var_dump($simple_linked_list->getNodeByBackIndex(0));
-
+*/
 
 
 /*
@@ -57,6 +74,7 @@ $simple_linked_list->display();
 */
 
 /*
+按编号大小顺序添加
 $root_node = new Node(0, '', '');
 $simple_linked_list = new SimpleLinkedList($root_node);
 $node1 = new Node('1', '宋江', '及时雨');
@@ -78,6 +96,9 @@ Class SimpleLinkedList
         $this->root_node = $root_node;
     }
 
+    /*
+     * 顺序添加
+     */
     public function add(Node $node)
     {
         $temp = $this->root_node;
@@ -92,6 +113,9 @@ Class SimpleLinkedList
         }
     }
 
+    /*
+     * 按编号大小顺序添加
+     */
     public function addOrderByNo(Node $node)
     {
         if ($this->root_node->next == null) {
@@ -111,6 +135,9 @@ Class SimpleLinkedList
         }
     }
 
+    /*
+     * 遍历链表
+     */
     public function display()
     {
         if ($this->root_node->next == null) {
@@ -126,6 +153,9 @@ Class SimpleLinkedList
         }
     }
 
+    /*
+     * 获取长度
+     */
     public function getLength()
     {
         $length = 0;
@@ -142,6 +172,9 @@ Class SimpleLinkedList
         return $length;
     }
 
+    /*
+     * 获取第k个节点
+     */
     public function getNodeByBackIndex($index)
     {
         if ($this->root_node->next == null) {
@@ -159,6 +192,35 @@ Class SimpleLinkedList
             $cur = $cur->next;
         }
         return $cur;
+    }
+
+    /*
+     * 单链表反转
+     * a.定义一个反转根节点
+     * b.从头到尾遍历原来的节点，每遍历一个节点就摘下，并放在新的链表的最前端
+     * c.原来的根节点next指向reverse rootNode->next
+     */
+    public function reverse(Node $root_node)
+    {
+        //链表为空或者只有一个节点
+        if ($root_node->next == null || $root_node->next->next == null) {
+            return;
+        }
+
+        //反转根节点
+        $reverse_root_node = new Node('0', '', '');
+        //指针,用于遍历
+        $cur = $root_node->next;
+        //存放摘下的节点
+        $reverse_node = null;
+
+        while ($cur != null)
+        {
+            $reverse_node = $cur;
+            $cur = $cur->next;
+            $reverse_node->next = $reverse_root_node->next;
+            $reverse_root_node->next = $reverse_node;
+        }
     }
 }
 
