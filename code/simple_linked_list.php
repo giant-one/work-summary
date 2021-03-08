@@ -19,6 +19,7 @@ $node3 = new Node('3', '李逵', '小旋风');
 $simple_linked_list->add($node1);
 $simple_linked_list->add($node2);
 $simple_linked_list->add($node3);
+
 echo "反转前~~\n";
 $simple_linked_list->display();
 $simple_linked_list->reverse($root_node);
@@ -211,16 +212,17 @@ Class SimpleLinkedList
         $reverse_root_node = new Node('0', '', '');
         //指针,用于遍历
         $cur = $root_node->next;
-        //存放摘下的节点
-        $reverse_node = null;
+        //存放当前节点的下一个节点
+        $next_node = null;
 
         while ($cur != null)
         {
-            $reverse_node = $cur;
-            $cur = $cur->next;
-            $reverse_node->next = $reverse_root_node->next;
-            $reverse_root_node->next = $reverse_node;
+            $next_node = $cur->next;
+            $cur->next = $reverse_root_node->next;
+            $reverse_root_node->next = $cur;
+            $cur = $next_node;
         }
+        $this->root_node->next = $reverse_root_node->next;
     }
 }
 
