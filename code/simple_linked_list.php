@@ -8,9 +8,24 @@
  * 5） 合并两个有序的单链表，合并之后的链表依然有序
  */
 
+
+
+/*
+ * 从头到尾打印单链表【反转遍历】
+ */
+
+
+
+
+
+
+
+
+
 /*
  * 单链表的反转【腾讯面试题】
  */
+/*
 $root_node = new Node(0, '', '');
 $simple_linked_list = new SimpleLinkedList($root_node);
 $node1 = new Node('1', '宋江', '及时雨');
@@ -25,7 +40,7 @@ $simple_linked_list->display();
 $simple_linked_list->reverse($root_node);
 echo "反转后~~\n";
 $simple_linked_list->display();
-
+*/
 
 /*
  * 求单链表中有效节点个数
@@ -223,6 +238,18 @@ Class SimpleLinkedList
             $cur = $next_node;
         }
         $this->root_node->next = $reverse_root_node->next;
+    }
+
+    /*
+     *  a.第一种思路是现将链表反转,在遍历打印
+     *      存在问题,会改变链表结构
+     *  b.利用 栈 数据结构,先遍历链表依次压入栈,然后依次输出栈内数据就好（推荐）
+     */
+    public function reverseShow(Node $node)
+    {
+        if ($node->next = null) {
+            return;
+        }
     }
 }
 
